@@ -1,0 +1,10 @@
+NCAS Git Course Notes
+
+Useful commands to use on the go:
+
+git status
+git add
+git commit
+git push
+git pull
+git log
