@@ -8,3 +8,4 @@ git commit
 git push
 git pull
 git log
+git config -e, to edit the permissions on the local machine access file
