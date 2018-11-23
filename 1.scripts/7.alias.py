@@ -17,4 +17,11 @@ a=[0,1,2]
 
 #%% With deepcopy
 
+b=a
 
+c=copy.deepcopy(a)
+
+b[0]=1
+print(a,b)
+c[0]=2
+print(c,a)

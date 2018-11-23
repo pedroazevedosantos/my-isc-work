@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+o#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Exercise 5: Inputs and Outputs
@@ -7,6 +7,49 @@ Exercise 5: Inputs and Outputs
 """
 
 import struct
+
+#%% Define functions
+
+def split_and_strip(line):
+    values=[]
+    for value in line.split(","):
+        values.append(value.strip())
+    return values
+
+def read_data_file(fpath):
+	"""
+	Reads weather data from CSV file.
+	Params:
+	 - fpath: file path to CSV file
+	Returns:
+	 - data dictionary.
+	"""
+	# Main code
+	data = {}
+
+	with open(fpath, 'r') as reader:
+
+		# Read header
+		header = reader.readline()
+		col_names = split_and_strip(header)
+		
+		# Set up dictionary for loading
+		for col in col_names:
+			data[col] = []
+
+		# Read data
+		for line in reader:
+			data_items = split_and_strip(line)
+#           Prints each line of the file
+#			print(f"[INFO] Data items: {data_items}")
+			
+			for (index, item) in enumerate(data_items):
+				col = col_names[index]
+				value = item
+				data[col].append(value)
+				
+	return data
+
 
 #%% Read and Print a File 
 
@@ -62,3 +105,11 @@ with open(filename2,'rb') as file_object:
 
 data=struct.unpack("bbbb",bin_data2)
 print(data)
+
+
+#%% Work with the data with a dictionary
+
+datadic=read_data_file(filename)
+
+print(datadic)
+

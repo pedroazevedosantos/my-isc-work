@@ -3,6 +3,7 @@
 ''' Plots a line graph from a NetCDF file '''
 
 
+#%% Import functions
 
 from netCDF4 import Dataset, num2date
 import numpy as np
@@ -10,6 +11,8 @@ import matplotlib.pyplot as plt
 
 # Tick "locators" c.f. http://matplotlib.org/api/dates_api.html
 from matplotlib.dates import MinuteLocator, DateFormatter
+
+#%% Load file
 
 datafile = '/tmp/sensor_data.nc'
 
@@ -20,6 +23,9 @@ temps = temp[:]
 time = nc.variables['time']
 times = []
 times = num2date(list(time[:]),units=time.units, calendar=time.calendar)
+
+
+#%% Set plot proprieties
 
 #get "handles" to affect plot styling
 fig, ax = plt.subplots()
@@ -45,4 +51,4 @@ plt.title(nc.title)
 #tidy up layout automatically
 fig.tight_layout()
 
-plt.savefig('sensor_data.png')
+#plt.savefig('sensor_data.png')
